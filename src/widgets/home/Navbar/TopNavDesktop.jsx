@@ -97,7 +97,8 @@ const StyledWrapper = styled.div`
           right: 0;
           left: auto;
           box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 24px;
-          top: calc(100% + 1px);
+          top: calc(100%);
+          z-index: 2;
           div {
             display: flex;
             flex-direction: column;

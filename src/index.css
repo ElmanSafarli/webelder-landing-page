@@ -16,4 +16,9 @@ html {
   /* Colors */
   --white: #fff;
   --black: #000;
+  --accent: #6c0694;
+}
+
+a {
+  text-decoration: none;
 }
