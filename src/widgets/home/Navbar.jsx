@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 // Components
-import { TopNavDesktop } from "./Navbar/index";
+import { TopNavDesktop, BottomNavDesktop } from "./Navbar/index";
 
 const Navbar = () => {
   return (
@@ -11,29 +10,7 @@ const Navbar = () => {
       <div className="mobile_nav"></div>
       <div className="desktop_nav">
         <TopNavDesktop />
-        <nav className="bottom">
-          <div>
-            <div className="logo">
-              <Link to="/">Logo</Link>
-            </div>
-            <div className="navigation">
-              <div className="menubar">
-                <span>Products</span>
-                <div className="menu"></div>
-              </div>
-              <div className="navigation">
-                <Link>Pricing</Link>
-              </div>
-              <div className="navigation">
-                <Link>Solutions</Link>
-              </div>
-              <div className="navigation">
-                <Link>Resources</Link>
-              </div>
-            </div>
-            <div className="btn_group"></div>
-          </div>
-        </nav>
+        <BottomNavDesktop />
       </div>
     </StyledWrapper>
   );
