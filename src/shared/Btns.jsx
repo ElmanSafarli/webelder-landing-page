@@ -2,21 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const MainBtn = () => {
+export const AccentBtn = ({ content, link }) => {
   return (
-    <StyleMainBtn>
-      <Link className="main">
-        <div className="original">Button</div>
+    <StyleAccentBtn>
+      <Link to={link} className="main">
+        <div className="original">{content}</div>
         <div className="letters">
-          <span>B</span>
-          <span>U</span>
-          <span>T</span>
-          <span>T</span>
-          <span>O</span>
-          <span>N</span>
+          {content.split("/n").map((word, wordIndex) => (
+            <span key={wordIndex} className="word">
+              {word.split("").map((letter, letterIndex) => (
+                <span key={letterIndex}>{letter}</span>
+              ))}
+            </span>
+          ))}
         </div>
       </Link>
-    </StyleMainBtn>
+    </StyleAccentBtn>
   );
 };
 
@@ -24,7 +25,46 @@ export const SecondaryBtn = () => {
   return <Link>Button</Link>;
 };
 
-const StyleMainBtn = styled.div`
+export const HamburgerMobileBtn = () => {
+  return (
+    <StyleHamburgerMobileBtn>
+      <svg
+        width="24px"
+        height="24px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 18L20 18"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M4 12L20 12"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M4 6L20 6"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </StyleHamburgerMobileBtn>
+  );
+};
+
+const StyleHamburgerMobileBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const StyleAccentBtn = styled.div`
   .main,
   .main *,
   .main :after,
@@ -41,7 +81,7 @@ const StyleMainBtn = styled.div`
     background-image: none;
     color: #fff;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 16px;
     line-height: 1.5;
     margin: 0;
     -webkit-mask-image: -webkit-radial-gradient(#000, var(--accent));
@@ -70,11 +110,10 @@ const StyleMainBtn = styled.div`
     border-radius: 999px;
     box-sizing: border-box;
     display: block;
-    font-weight: 900;
+    font-weight: 700;
     overflow: hidden;
-    padding: 1.2rem 3rem;
+    padding: 10px 20px;
     position: relative;
-    text-transform: uppercase;
   }
 
   .main .original {

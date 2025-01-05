@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 // Components
-import { TopNavDesktop, BottomNavDesktop } from "./Navbar/index";
+import { TopNavDesktop, BottomNavDesktop, TopNavMobile } from "./Navbar/index";
 
 const Navbar = () => {
   return (
     <StyledWrapper>
-      <div className="mobile_nav"></div>
+      <div className="mobile_nav">{/* <TopNavMobile /> */}</div>
       <div className="desktop_nav">
         <TopNavDesktop />
         <BottomNavDesktop />
