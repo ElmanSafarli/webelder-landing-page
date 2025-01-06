@@ -1,34 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 // Components
-import { AccentBtn, HamburgerMobileBtn } from "../../../shared";
+import { AccentBtn, HamburgerMobileBtn, LogoName } from "../../../shared";
 
 const TopNavMobile = () => {
   return (
     <StyledWrapper>
-      <nav>
+      <div>
+        <LogoName link="/" width="120" height="62" fill="black" />
         <div>
-          <Link to="/">WebElder</Link>
           <AccentBtn content="Contact us" link="/" />
           <HamburgerMobileBtn />
         </div>
-      </nav>
+      </div>
     </StyledWrapper>
   );
 };
 
-const StyledWrapper = styled.div`
-  nav {
-    div {
-      display: flex;
-      justify-content: space-between;
-      -moz-box-align: center;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-    }
+const StyledWrapper = styled.nav`
+  border-bottom: 1px solid #ded7cad9;
+  padding: 0 8px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    gap: 14px;
+    position: relative;
   }
 `;
 

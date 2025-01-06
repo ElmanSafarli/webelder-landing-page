@@ -4,3 +4,4 @@ export { default as BottomNavDesktop } from "./BttmNavDesktop";
 
 // Mobile
 export { default as TopNavMobile } from "./TopNavMobile";
+export { default as BottomNavMobile } from "./BttmNavMobile";

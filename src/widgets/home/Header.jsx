@@ -8,7 +8,7 @@ const Header = () => {
 };
 
 const StyledWrapper = styled.div`
-  height: 300vh;
+  height: 100vh;
 `;
 
 export default Header;
