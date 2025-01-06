@@ -39,8 +39,8 @@ const StyledWrapper = styled.div`
   .mobile_nav {
     display: none;
   }
-
   @media screen and (max-width: 768px) {
+    top: 0px;
     .mobile_nav {
       display: block;
     }

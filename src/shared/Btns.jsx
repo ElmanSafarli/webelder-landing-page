@@ -38,20 +38,20 @@ export const HamburgerMobileBtn = () => {
         <path
           d="M4 18L20 18"
           stroke="#000000"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <path
           d="M4 12L20 12"
           stroke="#000000"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <path
           d="M4 6L20 6"
           stroke="#000000"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </svg>
     </StyleHamburgerMobileBtn>
@@ -61,7 +61,19 @@ export const HamburgerMobileBtn = () => {
 const StyleHamburgerMobileBtn = styled.button`
   border: none;
   background-color: transparent;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
+
+  svg {
+    transition: all 0.3s ease-in-out;
+  }
+
+  @media screen and (max-width: 426px) {
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 `;
 
 const StyleAccentBtn = styled.div`
