@@ -11,7 +11,14 @@ export const AccentBtn = ({ content, link }) => {
           {content.split("/n").map((word, wordIndex) => (
             <span key={wordIndex} className="word">
               {word.split("").map((letter, letterIndex) => (
-                <span key={letterIndex}>{letter}</span>
+                <span
+                  key={letterIndex}
+                  style={{
+                    transitionDelay: `${letterIndex * 0.1}s`,
+                  }}
+                >
+                  {letter}
+                </span>
               ))}
             </span>
           ))}
@@ -21,8 +28,30 @@ export const AccentBtn = ({ content, link }) => {
   );
 };
 
-export const SecondaryBtn = () => {
-  return <Link>Button</Link>;
+export const SecondaryBtn = ({ content, link }) => {
+  return (
+    <StyleSecondaryBtn>
+      <Link to={link} className="main">
+        <div className="original">{content}</div>
+        <div className="letters">
+          {content.split("/n").map((word, wordIndex) => (
+            <span key={wordIndex} className="word">
+              {word.split("").map((letter, letterIndex) => (
+                <span
+                  key={letterIndex}
+                  style={{
+                    transitionDelay: `${letterIndex * 0.1}s`,
+                  }}
+                >
+                  {letter}
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </Link>
+    </StyleSecondaryBtn>
+  );
 };
 
 export const HamburgerMobileBtn = () => {
@@ -77,31 +106,17 @@ const StyleHamburgerMobileBtn = styled.button`
 `;
 
 const StyleAccentBtn = styled.div`
-  .main,
-  .main *,
-  .main :after,
-  .main :before,
-  .main:after,
-  .main:before {
-    border: 0 solid;
-    box-sizing: border-box;
-  }
-
   .main {
     -webkit-tap-highlight-color: transparent;
     background-color: #000;
     background-image: none;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     margin: 0;
     -webkit-mask-image: -webkit-radial-gradient(#000, var(--accent));
     padding: 0;
-  }
-
-  .main:disabled {
-    cursor: default;
   }
 
   .main:-moz-focusring {
@@ -122,7 +137,7 @@ const StyleAccentBtn = styled.div`
     border-radius: 999px;
     box-sizing: border-box;
     display: block;
-    font-weight: 700;
+    font-weight: 800;
     overflow: hidden;
     padding: 10px 20px;
     position: relative;
@@ -144,6 +159,10 @@ const StyleAccentBtn = styled.div`
 
   .main .letters {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 
   .main span {
@@ -160,24 +179,81 @@ const StyleAccentBtn = styled.div`
     opacity: 1;
     transform: translateY(0);
   }
+`;
 
-  .main:hover span:nth-child(2) {
-    transition-delay: 0.1s;
+const StyleSecondaryBtn = styled.div`
+  .main {
+    -webkit-tap-highlight-color: transparent;
+    background-color: #000;
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
   }
 
-  .main:hover span:nth-child(3) {
-    transition-delay: 0.2s;
+  .main:-moz-focusring {
+    outline: auto;
   }
 
-  .main:hover span:nth-child(4) {
-    transition-delay: 0.3s;
+  .main svg {
+    display: block;
+    vertical-align: middle;
   }
 
-  .main:hover span:nth-child(5) {
-    transition-delay: 0.4s;
+  .main [hidden] {
+    display: none;
   }
 
-  .main:hover span:nth-child(6) {
-    transition-delay: 0.5s;
+  .main {
+    border: 1.8px solid;
+    border-radius: 999px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 800;
+    overflow: hidden;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  .main .original {
+    background: var(--white);
+    color: var(--black);
+    display: grid;
+    inset: 0;
+    border-radius: 999px;
+    border: 1.8px solid var(--black);
+    place-content: center;
+    position: absolute;
+    transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  .main:hover .original {
+    transform: translateY(100%);
+  }
+
+  .main .letters {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .main span {
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+  }
+
+  .main span:nth-child(2n) {
+    transform: translateY(15px);
+  }
+
+  .main:hover span {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;

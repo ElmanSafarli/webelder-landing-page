@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Header />
-      <Header />
-      <Header />
+      <main>
+        <Header />
+      </main>
     </>
   );
 };

@@ -168,7 +168,7 @@ const StyledWrapper = styled.div`
 
       div {
         a {
-          font-weight: 500;
+          font-weight: 600;
           color: var(--black);
           line-height: calc(1.25em + 6px);
           min-height: calc(1.25em + 8px);

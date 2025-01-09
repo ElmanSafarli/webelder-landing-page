@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +11,8 @@ html {
   max-width: 1920px;
   margin: auto;
   overflow-x: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: "Life Savers", serif;
+  font-style: normal;
 }
 
 :root {

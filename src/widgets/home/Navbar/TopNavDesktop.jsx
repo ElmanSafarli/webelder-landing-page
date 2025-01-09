@@ -65,6 +65,7 @@ const StyledWrapper = styled.div`
         span {
           position: relative;
           font-size: 14px;
+          font-weight: 600;
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
           color: var(--black);

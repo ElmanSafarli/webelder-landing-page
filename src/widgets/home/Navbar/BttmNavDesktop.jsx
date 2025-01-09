@@ -72,7 +72,7 @@ const StyledWrapper = styled.div`
           font-size: 16px;
           border-radius: 0px;
           font-stretch: expanded;
-          font-weight: 500;
+          font-weight: 600;
           display: flex;
           line-height: calc(1.25em + 6px);
           flex-shrink: 0;
