@@ -31,8 +31,6 @@ const StyledWrapper = styled.section`
   padding: 64px 0px 88px 0px;
 
   .content {
-    margin: 0 auto;
-    max-width: 1120px;
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;

@@ -172,7 +172,7 @@ const StyledWrapper = styled.div`
           color: var(--black);
           line-height: calc(1.25em + 6px);
           min-height: calc(1.25em + 8px);
-          font-size: 14px;
+          font-size: 16px;
           white-space: nowrap;
           opacity: 0.6;
           transition: 600ms cubic-bezier(0.7, 0, 0.3, 1);
