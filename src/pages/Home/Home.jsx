@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // Components
-import { Navbar, Header, Service } from "../../widgets";
+import { Navbar, Header, Service, Info } from "../../widgets";
 
 const Home = () => {
   return (
@@ -11,6 +11,7 @@ const Home = () => {
       <StyleMain>
         <Header />
         <Service />
+        <Info />
       </StyleMain>
     </>
   );
