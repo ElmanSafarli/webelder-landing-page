@@ -19,7 +19,9 @@ const Info = () => {
               us; take it from Forrester. Their Total Economic Impact™ (TEI)
               study showed 286% return on investment over three years.
             </p>
-            <Link to="/">Reed the full report</Link>
+            <Link to="/" className="link link--carpo">
+              Reed the full report
+            </Link>
           </div>
           <div className="infoTab"></div>
           <div className="infoList">
@@ -72,6 +74,11 @@ const Info = () => {
 
 const StyledWrapper = styled.section`
   padding: 88px 0px;
+
+  @media screen and (max-width: 768px) {
+    padding: 32px 16px 48px 16px;
+  }
+
   .infoLine {
     display: flex;
     box-sizing: border-box;
@@ -112,7 +119,8 @@ const StyledWrapper = styled.section`
         line-height: 1.15;
 
         @media screen and (max-width: 768px) {
-          font-size: 34px;
+          font-size: 30px;
+          font-weight: 600;
         }
       }
 
@@ -125,6 +133,49 @@ const StyledWrapper = styled.section`
         @media screen and (max-width: 768px) {
           font-size: 14px;
         }
+      }
+
+      .link {
+        cursor: pointer;
+        font-size: 18px;
+        position: relative;
+        white-space: nowrap;
+        color: var(--black);
+        text-decoration: none; 
+        font-weight: 600;
+      }
+
+      .link::before,
+      .link::after {
+          position: absolute;
+          width: 100%;
+          height: 1.2px;
+          background: currentColor;
+          top: 100%;
+          left: 0;
+          pointer-events: none;
+      }
+
+      .link::before {
+          content: '';
+          transform-origin: 0% 50%;
+          transform: scale3d(0, 1, 1);
+          transition: transform 0.3s;
+      }
+
+      .link:hover::before {
+          transform: scale3d(1, 1, 1);
+      }
+
+      .link::after {
+          content: '';
+          top: calc(100% + 4px);
+          transition: transform 0.3s;
+          transform-origin: 100% 50%;
+      }
+
+      .link:hover::after {
+          transform: scale3d(0, 1, 1);
       }
     }
 
@@ -147,12 +198,13 @@ const StyledWrapper = styled.section`
       @media screen and (max-width: 768px) {
         flex: 0 0 100%;
         max-width: 100%;
+        margin-top: 32px;
       }
 
       ul {
         list-style: none;
         padding-left: 16px;
-        margin-bottom: 32px;
+        margin-bottom: 28px;
 
         li {
           display: flex;
