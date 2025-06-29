@@ -67,6 +67,28 @@ const Info = () => {
             </ul>
           </div>
         </div>
+        {/* Priveleges */}
+        <div className="infoPriveleges">
+          <div className="infoPrivelegesList">
+            <div className="infoPrivelegesItem">
+              <h3>60%</h3>
+              <p>Faster Launch</p>
+              <p>
+                Clients launch products 60% faster with our development support
+              </p>
+            </div>
+            <div className="infoPrivelegesItem">
+              <h3>100+</h3>
+              <p>Projects</p>
+              <p>Successfully delivered across multiple industries</p>
+            </div>
+            <div className="infoPrivelegesItem">
+              <h3>30</h3>
+              <p>Days</p>
+              <p>Rapid MVP development for startups and businesses</p>
+            </div>
+          </div>
+        </div>
       </div>
     </StyledWrapper>
   );
@@ -141,41 +163,41 @@ const StyledWrapper = styled.section`
         position: relative;
         white-space: nowrap;
         color: var(--black);
-        text-decoration: none; 
+        text-decoration: none;
         font-weight: 600;
       }
 
       .link::before,
       .link::after {
-          position: absolute;
-          width: 100%;
-          height: 1.2px;
-          background: currentColor;
-          top: 100%;
-          left: 0;
-          pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 1.2px;
+        background: currentColor;
+        top: 100%;
+        left: 0;
+        pointer-events: none;
       }
 
       .link::before {
-          content: '';
-          transform-origin: 0% 50%;
-          transform: scale3d(0, 1, 1);
-          transition: transform 0.3s;
+        content: "";
+        transform-origin: 0% 50%;
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.3s;
       }
 
       .link:hover::before {
-          transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
       }
 
       .link::after {
-          content: '';
-          top: calc(100% + 4px);
-          transition: transform 0.3s;
-          transform-origin: 100% 50%;
+        content: "";
+        top: calc(100% + 4px);
+        transition: transform 0.3s;
+        transform-origin: 100% 50%;
       }
 
       .link:hover::after {
-          transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
       }
     }
 
@@ -217,21 +239,87 @@ const StyledWrapper = styled.section`
 
           div:nth-of-type(2) {
             h5,
-            p{
-                color: var(--black);
-                line-height: 1.45;
+            p {
+              color: var(--black);
+              line-height: 1.45;
             }
 
             h5 {
-                margin-bottom: 2px;        
-                font-size: 16px; 
-                margin-top: 1px;
-                font-weight: 600;
+              margin-bottom: 2px;
+              font-size: 16px;
+              margin-top: 1px;
+              font-weight: 600;
             }
 
-            p{
-                margin: 0px 0px 16px;
+            p {
+              margin: 0px 0px 16px;
             }
+          }
+        }
+      }
+    }
+  }
+
+  .infoPriveleges {
+    margin-top: 64px;
+
+    @media screen and (max-width: 1280px) {
+      margin-top: 56px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-top: 48px;
+    }
+
+    .infoPrivelegesList {
+      display: flex;
+      gap: 24px;
+      -webkit-box-pack: center;
+      justify-content: center;
+
+      @media screen and (max-width: 768px) {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .infoPrivelegesItem {
+        max-width: 300px;
+        text-align: center;
+        color: var(--black);
+
+        h3 {
+          font-size: 74px;
+          margin: 0px 0px 10px;
+          font-weight: 400;
+
+          @media screen and (max-width: 1120px) {
+            font-size: 64px;
+          }
+
+          @media screen and (max-width: 768px) {
+            font-size: 48px;
+          }
+        }
+
+        p:first-of-type {
+          margin: 0px 0px 4px;
+          font-weight: 600;
+          line-height: 1.45;
+          font-size: 16px;
+
+          @media screen and (max-width: 768px) {
+            font-size: 15px;
+          }
+        }
+
+        p:nth-of-type(2) {
+          font-weight: 400;
+          line-height: 1.4;
+          font-size: 16px;
+
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+          }
         }
       }
     }
