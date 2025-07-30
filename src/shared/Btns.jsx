@@ -87,6 +87,22 @@ export const HamburgerMobileBtn = () => {
   );
 };
 
+export const SimpleWhite = ({ content, link }) => {
+  return (
+    <StyleSimpleWhite>
+      <Link to={link} className="main">
+        <div className="original">{content}</div>
+        <div className="letters">
+          {content.split("").map((char, index) => (
+            <span key={index} className="word">
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </div>
+      </Link>
+    </StyleSimpleWhite>
+  );
+};
 const StyleHamburgerMobileBtn = styled.button`
   border: none;
   background-color: transparent;
@@ -225,6 +241,79 @@ const StyleSecondaryBtn = styled.div`
     inset: 0;
     border-radius: 999px;
     border: 1.8px solid var(--black);
+    place-content: center;
+    position: absolute;
+    transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  .main:hover .original {
+    transform: translateY(100%);
+  }
+
+  .main .letters {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .main span {
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+  }
+
+  .main span:nth-child(2n) {
+    transform: translateY(15px);
+  }
+
+  .main:hover span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const StyleSimpleWhite = styled.div`
+  .main {
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--black);
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    border: 1.8px solid;
+    border-radius: 16px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 600;
+    overflow: hidden;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .main:-moz-focusring {
+    outline: auto;
+  }
+
+  .main svg {
+    display: block;
+    vertical-align: middle;
+  }
+
+  .main [hidden] {
+    display: none;
+  }
+
+  .main .original {
+    background: var(--white);
+    color: var(--black);
+    display: grid;
+    inset: 0;
     place-content: center;
     position: absolute;
     transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);

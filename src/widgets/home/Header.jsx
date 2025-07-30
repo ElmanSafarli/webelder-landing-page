@@ -28,6 +28,8 @@ const Header = () => {
 };
 
 const StyledWrapper = styled.section`
+  margin: 0 auto;
+  max-width: 1120px;
   padding: 64px 0px 88px 0px;
 
   .content {

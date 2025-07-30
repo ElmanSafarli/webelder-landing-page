@@ -15,9 +15,10 @@ const Info = () => {
             <h2>Return on investment</h2>
             <h2>Maximize your ROI</h2>
             <p>
-              You’ll save time and money with Zendesk. But don’t take it from
-              us; take it from Forrester. Their Total Economic Impact™ (TEI)
-              study showed 286% return on investment over three years.
+              Working with me means saving both time and money. I deliver
+              efficient, scalable websites and web apps that generate real
+              business value. Clients experience a measurable return on
+              investment through streamlined solutions and automation.
             </p>
             <Link to="/" className="link link--carpo">
               Reed the full report
@@ -33,8 +34,9 @@ const Info = () => {
                 <div>
                   <h5>Improve time to value</h5>
                   <p>
-                    Self-service and automation deflect up to 15% of agent
-                    contacts. Resolve insights.
+                    Our clients experience significant return on investment
+                    thanks to optimized performance. Every project is designed
+                    to save you time and maximize impact.
                   </p>
                 </div>
               </li>
@@ -43,11 +45,11 @@ const Info = () => {
                   <HomeInfoList />
                 </div>
                 <div>
-                  <h5>Reduce effort per ticket</h5>
+                  <h5>Fast Time to Value</h5>
                   <p>
-                    Self-service and automation deflect up to 15% of agent
-                    contacts. Resolve remaining tickets faster with rich
-                    customer insights.
+                    Our streamlined development process ensures your project is
+                    delivered on time — and ready to deliver results from day
+                    one.
                   </p>
                 </div>
               </li>
@@ -58,9 +60,9 @@ const Info = () => {
                 <div>
                   <h5>Keep costs low</h5>
                   <p>
-                    You don’t need a developer army to start using Zendesk, or
-                    an influx of agents to keep using it. Efficiency and
-                    automation are baked in.
+                    We deliver maintainable, secure, and future-ready web
+                    products with clear documentation and long-term value. Our
+                    focus on efficiency means you spend less — and get more.
                   </p>
                 </div>
               </li>
@@ -95,8 +97,9 @@ const Info = () => {
 };
 
 const StyledWrapper = styled.section`
-  padding: 88px 0px;
-
+  padding: 104px 0px;
+  margin: 0 auto;
+  max-width: 1120px;
   @media screen and (max-width: 768px) {
     padding: 32px 16px 48px 16px;
   }

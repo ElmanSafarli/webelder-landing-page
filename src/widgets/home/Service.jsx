@@ -136,6 +136,8 @@ const Service = () => {
 };
 
 const StyledWrapper = styled.section`
+  margin: 0 auto;
+  max-width: 1120px;
   .content {
     padding: 6% 0;
 
