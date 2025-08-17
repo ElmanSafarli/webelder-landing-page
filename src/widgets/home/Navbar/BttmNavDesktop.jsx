@@ -19,7 +19,7 @@ const BottomNavDesktop = () => {
               <div className="menu"></div>
             </div>
             <div className="navigation">
-              <Link>Pricing</Link>
+              <Link to="/prices">Pricing</Link>
             </div>
             <div className="navigation">
               <Link>Solutions</Link>
@@ -29,7 +29,7 @@ const BottomNavDesktop = () => {
             </div>
           </div>
           <div className="btn_group">
-            <AccentBtn content="Сontact us" link="/" />
+            <AccentBtn content="Сontact us" link="/contact" />
           </div>
         </div>
       </nav>

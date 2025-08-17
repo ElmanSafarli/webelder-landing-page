@@ -12,3 +12,4 @@ export * as CustomerLogos from "./assets/customers/index";
 export { LogoName } from "./Logos";
 
 export { ReactComponent as HomeInfoList } from "./assets/home_info_list.svg";
+export { ReactComponent as FormInvalid } from "./assets/form_invalid.svg";

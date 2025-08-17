@@ -14,7 +14,7 @@ const CTA = () => {
           <Link to="/" className="first">
             View portfolio
           </Link>
-          <SimpleWhite content="Dashboard" link="/" />
+          <SimpleWhite content="Contact us" link="/contact" />
         </div>
       </div>
     </StyledWrapper>

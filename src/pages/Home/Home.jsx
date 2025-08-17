@@ -9,6 +9,7 @@ import {
   Info,
   CTA,
   ServiceSolution,
+  Footer,
 } from "../../widgets";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         <CTA />
         <Info />
         <ServiceSolution />
+        <Footer />
       </StyleMain>
     </>
   );

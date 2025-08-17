@@ -39,6 +39,17 @@ const ServiceSolution = () => {
     `${CustomerLogos.Buta}`,
     `${CustomerLogos.Tiens}`,
     `${CustomerLogos.Weconsult}`,
+
+    `${CustomerLogos.TMTECH}`,
+    `${CustomerLogos.Neline}`,
+    `${CustomerLogos.Balonowa}`,
+    `${CustomerLogos.MJEngineering}`,
+    `${CustomerLogos.Ahmadshop}`,
+    `${CustomerLogos.Bobgames}`,
+    `${CustomerLogos.GardenCare}`,
+    `${CustomerLogos.Buta}`,
+    `${CustomerLogos.Tiens}`,
+    `${CustomerLogos.Weconsult}`,
   ];
   return (
     <StyledWrapper>
