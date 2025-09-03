@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // Components
@@ -8,113 +8,189 @@ import { FormInvalid } from "../../shared/";
 import { Link } from "react-router-dom";
 
 const Contact = () => {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = {};
+
+    if (!form.firstName.trim()) newErrors.firstName = "This field is required";
+    if (!form.lastName.trim()) newErrors.lastName = "This field is required";
+    if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+      newErrors.email = "Please enter a valid email address";
+    if (!form.phone.trim()) newErrors.phone = "This field is required";
+    if (!form.message.trim()) newErrors.message = "This field is required";
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      console.log("Form submitted ✅", form);
+      // здесь можно отправить данные на сервер
+    }
+  };
+
   return (
     <>
       <Navbar />
       <StyleMain>
-        <>
-          <div className="contact">
-            <h2 className="contact-title">Contact Us</h2>
-            <div className="contact-grid">
-              <div className="contact-form">
-                <h1>Get in touch with sales</h1>
-                <p>
-                  We’ll help you find the right solutions and pricing for your
-                  business. Fill out the form below and our team will get back
-                  to you shortly.
-                </p>
-                <form action="">
-                  <div className="user-data">
-                    <div className="user-data-grid">
-                      <div className="user-data-item">
-                        <label htmlFor="">First Name</label>
-                        <div className="user-data-input">
-                          <input
-                            type="text"
-                            name="FirstName"
-                            label="First Name"
-                            aria-invalid="true"
-                          />
-                          <div className="formInvalidIcon formInvalid">
+        <div className="contact">
+          <h2 className="contact-title">Contact Us</h2>
+          <div className="contact-grid">
+            <div className="contact-form">
+              <h1>Get in touch with sales</h1>
+              <p>
+                We’ll help you find the right solutions and pricing for your
+                business. Fill out the form below and our team will get back to
+                you shortly.
+              </p>
+              <form onSubmit={handleSubmit}>
+                <div className="user-data">
+                  <div className="user-data-grid">
+                    {/* First Name */}
+                    <div className="user-data-item">
+                      <label>First Name</label>
+                      <div className="user-data-input">
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={form.firstName}
+                          onChange={handleChange}
+                        />
+                        {errors.firstName && (
+                          <div className="formInvalidIcon">
                             <FormInvalid />
                           </div>
-                        </div>
-                        <div className="formInvalidText formInvalid">
-                          <FormInvalid />
-                          This field is required
-                        </div>
+                        )}
                       </div>
-                      <div className="user-data-item">
-                        <label htmlFor="">Last Name</label>
-                        <div className="user-data-input">
-                          <input type="text" />
-                          <div className="formInvalidIcon formInvalid">
+                      {errors.firstName && (
+                        <div className="formInvalidText">
+                          <FormInvalid />
+                          {errors.firstName}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Last Name */}
+                    <div className="user-data-item">
+                      <label>Last Name</label>
+                      <div className="user-data-input">
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={form.lastName}
+                          onChange={handleChange}
+                        />
+                        {errors.lastName && (
+                          <div className="formInvalidIcon">
                             <FormInvalid />
                           </div>
-                        </div>
-                        <div className="formInvalidText formInvalid">
-                          <FormInvalid />
-                          This field is required
-                        </div>
+                        )}
                       </div>
-                      <div className="user-data-item">
-                        <label htmlFor="">Work Email</label>
-                        <div className="user-data-input">
-                          <input type="email" />
-                          <div className="formInvalidIcon formInvalid">
+                      {errors.lastName && (
+                        <div className="formInvalidText">
+                          <FormInvalid />
+                          {errors.lastName}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Email */}
+                    <div className="user-data-item">
+                      <label>Work Email</label>
+                      <div className="user-data-input">
+                        <input
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                        />
+                        {errors.email && (
+                          <div className="formInvalidIcon">
                             <FormInvalid />
                           </div>
-                        </div>
-                        <div className="formInvalidText formInvalid">
-                          <FormInvalid />
-                          Please enter a valid email address
-                        </div>
+                        )}
                       </div>
-                      <div className="user-data-item">
-                        <label htmlFor="">Phone Number</label>
-                        <div className="user-data-input">
-                          <input type="tel" />
-                          <div className="formInvalidIcon formInvalid">
+                      {errors.email && (
+                        <div className="formInvalidText">
+                          <FormInvalid />
+                          {errors.email}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Phone */}
+                    <div className="user-data-item">
+                      <label>Phone Number</label>
+                      <div className="user-data-input">
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={form.phone}
+                          onChange={handleChange}
+                        />
+                        {errors.phone && (
+                          <div className="formInvalidIcon">
                             <FormInvalid />
                           </div>
-                        </div>
-                        <div className="formInvalidText formInvalid">
-                          <FormInvalid />
-                          This field is required
-                        </div>
+                        )}
                       </div>
-                      <div className="user-data-item user-data-item-span2">
-                        <label htmlFor="">Message</label>
-                        <div className="user-data-input">
-                          <textarea name="" id=""></textarea>
-                          <div className="formInvalidIcon formInvalid">
+                      {errors.phone && (
+                        <div className="formInvalidText">
+                          <FormInvalid />
+                          {errors.phone}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Message */}
+                    <div className="user-data-item user-data-item-span2">
+                      <label>Message</label>
+                      <div className="user-data-input">
+                        <textarea
+                          name="message"
+                          value={form.message}
+                          onChange={handleChange}
+                        />
+                        {errors.message && (
+                          <div className="formInvalidIcon">
                             <FormInvalid />
                           </div>
-                        </div>
-                        <div className="formInvalidText formInvalid">
-                          <FormInvalid />
-                          This field is required
-                        </div>
+                        )}
                       </div>
-                      <div className="user-country-dropdown"></div>
+                      {errors.message && (
+                        <div className="formInvalidText">
+                          <FormInvalid />
+                          {errors.message}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <p>
-                    By submitting my personal data, I consent to Zendesk
-                    collecting, processing, and storing my information in
-                    accordance with the{" "}
-                    <Link to="/"> Zendesk Privacy Notice.</Link>
-                  </p>
-                  <div className="contact-link">
-                    <button>Send Message</button>
-                  </div>
-                </form>
-              </div>
-              <div className="contact-hr"></div>
-              <div className="contact-info"></div>
+                </div>
+                <p>
+                  By submitting my personal data, I consent to Zendesk
+                  collecting, processing, and storing my information in
+                  accordance with the{" "}
+                  <Link to="/">WebElder Privacy Notice.</Link>
+                </p>
+                <div className="contact-link">
+                  <button type="submit">Send Message</button>
+                </div>
+              </form>
             </div>
           </div>
-        </>
+        </div>
       </StyleMain>
       <Footer />
     </>
@@ -127,6 +203,10 @@ const StyleMain = styled.main`
     position: relative;
     margin: 0 auto;
     padding: 80px 0;
+
+    @media screen and (max-width: 768px) {
+      padding: 50px 4%;
+    }
 
     .contact-title {
       color: rgb(17, 17, 13);
@@ -142,10 +222,19 @@ const StyleMain = styled.main`
     .contact-grid {
       display: flex;
 
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
+
       .contact-form {
         flex: 0 0 50%;
         -webkit-box-flex: 0;
         max-width: 50%;
+
+        @media screen and (max-width: 768px) {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
 
         h1 {
           color: var(--black);
@@ -153,6 +242,10 @@ const StyleMain = styled.main`
           font-weight: 500;
           font-size: 40px;
           line-height: 1.15;
+
+          @media screen and (max-width: 768px) {
+            font-size: 30px;
+          }
         }
 
         p {
@@ -162,6 +255,10 @@ const StyleMain = styled.main`
           line-height: 1.45;
           margin: 0px 0px 16px;
           width: 100%;
+
+          @media screen and (max-width: 768px) {
+            font-size: 15px;
+          }
         }
 
         .user-data {
@@ -170,6 +267,10 @@ const StyleMain = styled.main`
             gap: 24px;
             grid-column: span 2;
             grid-template-columns: repeat(2, 1fr);
+
+            @media screen and (max-width: 768px) {
+              grid-template-columns: repeat(1, 1fr);
+            }
 
             .user-data-item {
               display: flex;
@@ -183,10 +284,6 @@ const StyleMain = styled.main`
                 font-size: 13px;
                 font-weight: 500;
                 color: #b84242ff;
-              }
-
-              .formInvalid {
-                display: none;
               }
 
               label {
@@ -242,6 +339,10 @@ const StyleMain = styled.main`
 
             .user-data-item-span2 {
               grid-column: span 2;
+
+              @media screen and (max-width: 768px) {
+                grid-column: span 1;
+              }
             }
           }
         }
