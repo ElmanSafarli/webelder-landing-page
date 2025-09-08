@@ -15,14 +15,14 @@ const BottomNavDesktop = () => {
           </div>
           <div className="navigation">
             <div className="menubar">
-              <span>Products</span>
+              <span>Services</span>
               <div className="menu"></div>
             </div>
             <div className="navigation">
               <Link to="/prices">Pricing</Link>
             </div>
             <div className="navigation">
-              <Link>Solutions</Link>
+              <Link>Portfolio</Link>
             </div>
             <div className="navigation">
               <Link>Resources</Link>

@@ -1,21 +1,22 @@
-import React from "react";
-import styled from "styled-components";
-
-// Components
-import { Navbar, Footer, Plans } from "../../widgets";
+import React, { useState, useEffect } from "react";
+import { Navbar, Footer, Plans, MobilePlans } from "../../widgets";
 
 const Prices = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <Navbar />
-      <StyleMain>
-        <Plans />
-      </StyleMain>
+      {isMobile ? <MobilePlans /> : <Plans />}
       <Footer />
     </>
   );
 };
-
-const StyleMain = styled.main``;
 
 export default Prices;

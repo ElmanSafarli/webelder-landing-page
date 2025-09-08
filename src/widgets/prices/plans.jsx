@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import MobilePlans from "./mobilePlans";
-import { plansData } from "../../constants/plans/plansData";
+import { plansData } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { AccentBtn } from "../../shared";
@@ -40,7 +39,6 @@ const Plans = () => {
             </div>
           ))}
         </div>
-        <MobilePlans />
       </div>
     </StyledWrapper>
   );

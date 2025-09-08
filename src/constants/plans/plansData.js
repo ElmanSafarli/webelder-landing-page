@@ -1,4 +1,4 @@
-export const plansData = [
+const plansData = [
   {
     id: "basic",
     title: "Basic",
@@ -61,3 +61,5 @@ export const plansData = [
     ],
   },
 ];
+
+export default plansData;
