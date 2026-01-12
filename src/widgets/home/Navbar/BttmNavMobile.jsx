@@ -90,7 +90,7 @@ const BottomNavMobile = () => {
             <Link to="/">Overview</Link>
           </div>
           <div>
-            <Link to="/">Projects</Link>
+            <Link to="/projects">Projects</Link>
           </div>
           <div>
             <Link to="/">Our Benefits</Link>

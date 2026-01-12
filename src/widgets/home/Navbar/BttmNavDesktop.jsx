@@ -22,7 +22,7 @@ const BottomNavDesktop = () => {
               <Link to="/prices">Pricing</Link>
             </div>
             <div className="navigation">
-              <Link>Portfolio</Link>
+              <Link to="/projects">Portfolio</Link>
             </div>
             <div className="navigation">
               <Link>Resources</Link>
