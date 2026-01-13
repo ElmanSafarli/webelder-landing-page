@@ -126,6 +126,13 @@ const StyleMain = styled.main`
     max-width: 1120px;
     display: grid;
     gap: 12px;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 64px 16px;
+    }
   }
 
   .project-item {
@@ -138,7 +145,15 @@ const StyleMain = styled.main`
 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12);
 
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, height 0.3s ease;
+
+    @media (max-width: 768px) {
+      height: 220px;
+    }
+
+    @media (max-width: 480px) {
+      height: 180px;
+    }
   }
   .project-item:hover {
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.18);
@@ -172,21 +187,11 @@ const StyleMain = styled.main`
       font-weight: 500;
       line-height: 1;
       white-space: nowrap;
+
+      @media (max-width: 480px) {
+        font-size: 14px;
+      }
     }
-  }
-
-  .project-item:nth-child(4n + 2) {
-    grid-column: 2 / 3; /* правая колонка */
-  }
-  .project-item:nth-child(4n + 1) {
-    grid-column: 1 / 2; /* левая колонка */
-  }
-
-  .project-item:nth-child(4n + 3) {
-    grid-column: 1 / 2; /* левая колонка (30%) */
-  }
-  .project-item:nth-child(4n + 4) {
-    grid-column: 2 / 3; /* правая колонка (70%) */
   }
 `;
 
@@ -205,14 +210,20 @@ const Modal = styled.div`
   .modal-content {
     background: var(--white);
     border-radius: 10px;
-    min-width: 600px;
-    min-height: min(720px, 90vh);
+
+    width: 70vw;
+    max-width: 1100px;
+
+    height: 90vh;
     width: 70vw;
     overflow-y: auto;
     transition: all 0.3s ease;
 
     @media screen and (max-width: 1020px) {
       width: 90vw;
+    }
+    @media (max-width: 768px) {
+      width: 95vw;
     }
 
     .project-content {
@@ -222,8 +233,17 @@ const Modal = styled.div`
       gap: 36px;
       padding: 0 30px;
 
+      @media (max-width: 1024px) {
+        gap: 24px;
+      }
+
       @media screen and (max-width: 820px) {
         flex-direction: column;
+      }
+
+      @media (max-width: 480px) {
+        gap: 0;
+        padding: 0 16px;
       }
     }
 
@@ -233,9 +253,18 @@ const Modal = styled.div`
       justify-content: space-between;
       align-items: center;
 
+      @media (max-width: 480px) {
+        padding: 20px 16px;
+      }
+
       h2 {
         font-size: 32px;
         font-weight: 500;
+
+        @media (max-width: 480px) {
+          font-size: 22px;
+          width: 70%;
+        }
       }
 
       .modal-close {
@@ -247,6 +276,17 @@ const Modal = styled.div`
         align-items: center;
         cursor: pointer;
         border: none;
+
+        @media (max-width: 480px) {
+          width: 40px;
+          height: 40px;
+        }
+
+        svg {
+          @media (max-width: 480px) {
+            font-size: 12px;
+          }
+        }
       }
     }
     .project-info {
@@ -270,12 +310,20 @@ const Modal = styled.div`
           font-weight: 400;
           font-size: 16px;
           margin: 0 0 20px;
+
+          @media (max-width: 480px) {
+            margin: 0 0 12px;
+          }
         }
 
         p:last-child {
           color: var(--black);
           font-weight: 400;
           font-size: 16px;
+
+          @media (max-width: 480px) {
+            font-size: 14px;
+          }
         }
 
         ul {
@@ -290,6 +338,10 @@ const Modal = styled.div`
             padding: 8px 14px;
             background: #333333;
             border-radius: 24px;
+
+            @media (max-width: 480px) {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -308,6 +360,14 @@ const Modal = styled.div`
       margin-bottom: 12px;
       width: 100%;
       height: 400px;
+
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+
+      @media (max-width: 480px) {
+        height: 220px;
+      }
 
       img {
         width: 100%;
@@ -329,6 +389,11 @@ const Modal = styled.div`
       cursor: pointer;
       opacity: 0.7;
       transition: 0.2s;
+
+      @media (max-width: 480px) {
+        width: 60px;
+        height: 45px;
+      }
     }
 
     .thumb:hover,

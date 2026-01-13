@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 // Components
-import { Home, Contact, Prices, Projects } from "../../pages";
+import { Home, Contact, Prices, Projects, NotFound } from "../../pages";
 
 const Navigate = () => {
   return (
@@ -12,6 +12,8 @@ const Navigate = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/prices" element={<Prices />} />
       <Route path="/projects" element={<Projects />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
