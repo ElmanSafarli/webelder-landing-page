@@ -8,7 +8,7 @@ const CTA = () => {
     <StyledWrapper>
       <div className="cta-banner">
         <div>
-          <h3>Start your project today</h3>
+          <h2>Start your project today</h2>
         </div>
         <div className="cta-links">
           <Link to="/" className="first">
@@ -49,7 +49,7 @@ const StyledWrapper = styled.section`
       justify-content: center;
     }
 
-    h3 {
+    h2 {
       color: var(--white);
       font-weight: 500;
       font-size: 28px;

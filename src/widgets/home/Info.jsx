@@ -12,7 +12,7 @@ const Info = () => {
         {/* Top block */}
         <div className="infoLine">
           <div className="infoMain">
-            <h2>Return on investment</h2>
+            <p className="section-label">Return on investment</p>
             <h2>Maximize your ROI</h2>
             <p>
               Working with me means saving both time and money. I deliver
@@ -32,7 +32,7 @@ const Info = () => {
                   <HomeInfoList />
                 </div>
                 <div>
-                  <h5>Improve time to value</h5>
+                  <h3>Improve time to value</h3>
                   <p>
                     Our clients experience significant return on investment
                     thanks to optimized performance. Every project is designed
@@ -45,7 +45,7 @@ const Info = () => {
                   <HomeInfoList />
                 </div>
                 <div>
-                  <h5>Fast Time to Value</h5>
+                  <h3>Fast Time to Value</h3>
                   <p>
                     Our streamlined development process ensures your project is
                     delivered on time — and ready to deliver results from day
@@ -58,7 +58,7 @@ const Info = () => {
                   <HomeInfoList />
                 </div>
                 <div>
-                  <h5>Keep costs low</h5>
+                  <h3>Keep costs low</h3>
                   <p>
                     We deliver maintainable, secure, and future-ready web
                     products with clear documentation and long-term value. Our
@@ -124,7 +124,7 @@ const StyledWrapper = styled.section`
         color: var(--black);
       }
 
-      h2:first-of-type {
+      .section-label {
         line-height: 1.3;
         text-transform: uppercase;
         letter-spacing: 0.75px;
@@ -137,7 +137,7 @@ const StyledWrapper = styled.section`
         }
       }
 
-      h2:nth-of-type(2) {
+      h2 {
         margin: 0px 0px 24px;
         font-weight: 800;
         font-size: 42px;
@@ -241,13 +241,13 @@ const StyledWrapper = styled.section`
           }
 
           div:nth-of-type(2) {
-            h5,
+            h3,
             p {
               color: var(--black);
               line-height: 1.45;
             }
 
-            h5 {
+            h3 {
               margin-bottom: 2px;
               font-size: 16px;
               margin-top: 1px;

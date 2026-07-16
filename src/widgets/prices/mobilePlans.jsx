@@ -1,249 +1,184 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight, faCheck } from "@fortawesome/free-solid-svg-icons";
+
 import { plansData } from "../../constants";
 import { AccentBtn } from "../../shared";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faArrowLeft,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
 
 const MobilePlans = () => {
   const [slidesToShow, setSlidesToShow] = useState(
     window.innerWidth <= 600 ? 1 : 2
   );
-
-  const totalSlides = Math.ceil(plansData.length / slidesToShow);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const totalSlides = Math.ceil(plansData.length / slidesToShow);
 
   useEffect(() => {
-    const handleResize = () => {
-      setSlidesToShow(window.innerWidth <= 600 ? 1 : 2);
-    };
+    const handleResize = () => setSlidesToShow(window.innerWidth <= 600 ? 1 : 2);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    setCurrentIndex((previous) => Math.min(previous, totalSlides - 1));
+  }, [totalSlides]);
+
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1 >= totalSlides ? 0 : prev + 1));
+    setCurrentIndex((previous) => (previous + 1 >= totalSlides ? 0 : previous + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 < 0 ? totalSlides - 1 : prev - 1));
+    setCurrentIndex((previous) => (previous === 0 ? totalSlides - 1 : previous - 1));
   };
 
   return (
     <StyledWrapper $slidesToShow={slidesToShow}>
-      <div className="mobile_plansSlider">
-        {/* Верхний слайдер */}
-        <div className="slider-container">
-          <div
-            className="slider-track"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {plansData.map((plan) => (
-              <div className="slide" key={plan.id}>
-                <div className="card-style">
-                  <h3>{plan.title}</h3>
-                  <p>{plan.description}</p>
-                  <div className="price">
-                    <p>{plan.price}</p>
-                  </div>
-                  <div className="card-btn">
-                    <AccentBtn content="Order now" link="/contact" />
-                  </div>
+      <div className="slider-container">
+        <div
+          className="slider-track"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {plansData.map((plan) => (
+            <div className="slide" key={plan.id}>
+              <article className={`plan-card ${plan.recommended ? "recommended" : ""}`}>
+                <div className="plan-title">
+                  <h2>{plan.title}</h2>
+                  {plan.recommended && <span>Most popular</span>}
                 </div>
-              </div>
-            ))}
-          </div>
+                <p className="description">{plan.description}</p>
+                <div className="price">
+                  <strong>{plan.price}</strong>
+                  <span>starting from</span>
+                </div>
+                <AccentBtn content={plan.buttonText} link="/contact" />
+                <h3>Key features</h3>
+                <ul>
+                  {plan.features.map((feature) => (
+                    <li key={feature}>
+                      <FontAwesomeIcon icon={faCheck} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Навигация */}
-        <div className="slide_nav">
-          <button onClick={prevSlide} aria-label="Previous slide">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-          {Array.from({ length: totalSlides }).map((_, i) => (
+      <div className="slider-navigation">
+        <button type="button" onClick={prevSlide} aria-label="Previous plans">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <div className="dots">
+          {Array.from({ length: totalSlides }).map((_, index) => (
             <button
-              key={i}
-              className={`dot-nav ${i === currentIndex ? "active" : ""}`}
-              onClick={() => setCurrentIndex(i)}
-              aria-label={`Go to slide group ${i + 1}`}
+              type="button"
+              key={index}
+              className={index === currentIndex ? "active" : ""}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Show plan group ${index + 1}`}
+              aria-current={index === currentIndex ? "true" : undefined}
             />
           ))}
-          <button onClick={nextSlide} aria-label="Next slide">
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
         </div>
-
-        {/* Нижний слайдер */}
-        <div className="slider-container">
-          <div
-            className="slider-track"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {plansData.map((plan) => (
-              <div className="slide" key={plan.id}>
-                <div className="infoCard-style">
-                  <h4>{plan.title}</h4>
-                  <h5>Key features</h5>
-                  <ul>
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx}>
-                        <FontAwesomeIcon icon={faCheck} />{" "}
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <button type="button" onClick={nextSlide} aria-label="Next plans">
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
       </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.section`
-  margin: 0 auto;
-  max-width: 1120px;
+  width: 100%;
 
-  .slider-container {
-    overflow: hidden;
-    width: 100%;
+  .slider-container { width: 100%; overflow: hidden; }
+  .slider-track { display: flex; width: 100%; transition: transform 0.42s cubic-bezier(0.7, 0, 0.3, 1); }
+  .slide { min-width: ${({ $slidesToShow }) => 100 / $slidesToShow}%; padding: 5px 7px 12px; }
+
+  .plan-card {
+    height: 100%;
+    padding: 25px 22px;
+    background: var(--white);
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   }
 
-  .slider-track {
+  .plan-card.recommended {
+    border: 2px solid var(--accent);
+    box-shadow: 0 12px 30px rgba(154, 68, 151, 0.12);
+  }
+
+  .plan-title {
     display: flex;
-    transition: transform 0.4s ease;
-    width: 100%;
-  }
-
-  .slide {
-    min-width: ${({ $slidesToShow }) => 100 / $slidesToShow}%;
-    box-sizing: border-box;
-    padding: 16px;
-  }
-
-  .card-style {
-    background: rgb(245, 245, 242);
-    border-radius: 12px;
-    padding: 24px;
-
-    h3 {
-      margin: 0px 0px 8px;
-      padding: 0px 16px 0px 0px;
-      font-weight: 500;
-      font-size: 22px;
-      line-height: 1.25;
-      color: var(--black);
-    }
-
-    p {
-      padding: 0px 16px 0px 0px;
-      font-size: 15px;
-      line-height: 1.45;
-      margin: 0px 0px 16px;
-      font-weight: 400;
-      min-height: 56px;
-    }
-
-    .price {
-      p {
-        font-weight: 500;
-        font-size: 22px;
-        line-height: 1.25;
-        color: var(--black);
-      }
-    }
-  }
-
-  .infoCard-style {
-    padding-right: 6px;
-    padding-left: 6px;
+    min-height: 48px;
     align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    position: relative;
-    transition: box-shadow;
-    width: 100%;
-    background-color: rgb(245, 245, 242);
-    padding: 32px 12px 12px;
-    border-radius: 12px;
+    justify-content: space-between;
+    gap: 10px;
 
-    h4 {
-      font-weight: 500;
-      font-size: 22px;
-      line-height: 1.25;
-      padding: 0px 16px 0px 0px;
-      margin: 0px 0px 8px;
-      color: var(--black);
-    }
-
-    h5 {
-      margin-top: 24px;
-      font-weight: 600;
-      font-size: 15px;
-      line-height: 1.45;
-      padding: 0px 16px 0px 0px;
-      margin: 0px 0px 12px;
-      color: var(--black);
-    }
-
-    ul {
-      list-style: none;
-      margin-bottom: 32px;
-      padding: 0px;
-      margin: 0px;
-      width: 100%;
-
-      li {
-        background-color: rgb(255, 255, 255);
-        border-radius: 4px;
-        display: flex;
-        gap: 16px;
-        padding: 8px;
-        margin: 12px 0px 16px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1.45;
-        color: var(--black);
-      }
-    }
-  }
-
-  .slide_nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin: 12px 0;
-
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .dot-nav {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      padding: 0px;
-      background-color: transparent;
-      border: 1px solid rgba(17, 17, 13, 0.18);
-      cursor: pointer;
-    }
-
-    .dot-nav.active {
+    h2 { font-size: 23px; font-weight: 600; }
+    span {
+      padding: 5px 7px;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      white-space: nowrap;
+      text-transform: uppercase;
       background: var(--accent);
+      border-radius: 4px;
     }
   }
+
+  .description { min-height: 48px; margin-bottom: 22px; color: #666; font-size: 14px; line-height: 1.5; }
+  .price { display: flex; flex-direction: column; margin-bottom: 18px; }
+  .price strong { font-size: 34px; font-weight: 600; line-height: 1; }
+  .price span { margin-top: 6px; color: #858585; font-size: 11px; }
+  .plan-card > div:nth-of-type(3), .plan-card > div:nth-of-type(3) a { width: 100%; }
+
+  h3 { margin: 28px 0 17px; padding-top: 22px; font-size: 15px; font-weight: 600; border-top: 1px solid #e8e8e8; }
+  ul { display: grid; gap: 13px; list-style: none; }
+  li { display: flex; gap: 11px; align-items: flex-start; color: #333; font-size: 14px; line-height: 1.4; }
+  li svg { margin-top: 4px; color: var(--accent); font-size: 11px; }
+
+  .slider-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 18px;
+
+    > button {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid #d8d8d8;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    > button:hover, > button:focus-visible { color: #fff; background: var(--black); }
+  }
+
+  .dots { display: flex; gap: 8px; }
+  .dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    background: #d2d2d2;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: width 0.2s ease, background 0.2s ease;
+  }
+  .dots button.active { width: 22px; background: var(--accent); border-radius: 8px; }
+
+  @media (max-width: 600px) { .slide { padding-right: 4px; padding-left: 4px; } }
 `;
 
 export default MobilePlans;

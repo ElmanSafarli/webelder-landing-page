@@ -51,12 +51,24 @@ const ServiceSolution = () => {
     `${CustomerLogos.Tiens}`,
     `${CustomerLogos.Weconsult}`,
   ];
+  const logoNames = [
+    "TMTECH",
+    "Netline",
+    "Balonowa",
+    "MJ Engineering",
+    "Ahmad Shop",
+    "Bob Games",
+    "Garden Care",
+    "Buta",
+    "Tiens",
+    "Weconsult",
+  ];
   return (
     <StyledWrapper>
       <div className="service-solution">
         <div className="info">
           <div className="text">
-            <h2>The #1 service solution</h2>
+            <p className="section-label">The #1 service solution</p>
             <h2>
               Powering 100,000+ of the best customer and employee experiences
             </h2>
@@ -73,7 +85,13 @@ const ServiceSolution = () => {
           <div className="slider">
             <div className="slide-track">
               {logos.concat(logos).map((logo, index) => (
-                <img key={index} src={logo} alt={`logo-${index}`} />
+                <img
+                  key={index}
+                  src={logo}
+                  alt={index < logoNames.length ? `${logoNames[index]} client logo` : ""}
+                  loading="lazy"
+                  decoding="async"
+                />
               ))}
             </div>
           </div>
@@ -101,13 +119,16 @@ const StyledWrapper = styled.section`
           width: 100%;
           max-width: 400px;
         }
-        h2:first-of-type {
+        .section-label {
+          color: var(--white);
+          width: 100%;
+          max-width: 400px;
           margin: 0px 0px 8px;
           font-weight: 700;
           font-size: 14px;
           text-transform: uppercase;
         }
-        h2:last-of-type {
+        h2 {
           margin: 0px 0px 24px;
           font-weight: 500;
           font-size: 42px;

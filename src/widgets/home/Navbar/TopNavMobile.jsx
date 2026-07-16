@@ -13,7 +13,7 @@ const TopNavMobile = () => {
         </div>
         <div>
           <div className="accent-btn">
-            <AccentBtn content="Contact us" link="/" />
+            <AccentBtn content="Contact us" link="/contact" />
           </div>
 
           <HamburgerMobileBtn />

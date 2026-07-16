@@ -15,6 +15,7 @@ const plansData = [
   },
   {
     id: "standard",
+    recommended: true,
     title: "Standard",
     description: "Up to 5 pages with custom design",
     price: "$700",

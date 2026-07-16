@@ -87,25 +87,31 @@ const BottomNavMobile = () => {
       >
         <div>
           <div>
-            <Link to="/">Overview</Link>
+            <Link to="/">Home</Link>
           </div>
           <div>
-            <Link to="/projects">Projects</Link>
+            <Link to="/services">Services</Link>
           </div>
           <div>
-            <Link to="/">Our Benefits</Link>
+            <Link to="/company">Company</Link>
           </div>
           <div>
-            <Link to="/">Reviews</Link>
+            <Link to="/product-support">Product Support</Link>
           </div>
           <div>
-            <Link to="/">Projects</Link>
+            <Link to="/services/web-development">Web Development</Link>
           </div>
           <div>
-            <Link to="/">Our Benefits</Link>
+            <Link to="/services/ui-ux-design">UI/UX Design</Link>
           </div>
           <div>
-            <Link to="/">Reviews</Link>
+            <Link to="/services/branding">Branding</Link>
+          </div>
+          <div>
+            <Link to="/projects">Portfolio</Link>
+          </div>
+          <div>
+            <Link to="/prices">Pricing</Link>
           </div>
         </div>
       </div>

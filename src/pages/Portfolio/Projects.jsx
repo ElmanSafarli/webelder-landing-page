@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Navbar, Footer } from "../../widgets";
 import { portfolioData } from "../../constants";
 
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Projects = () => {
@@ -29,18 +29,44 @@ const Projects = () => {
       <Navbar />
       <StyleMain>
         <div className="projects">
+          <header className="projects-header">
+            <span>Selected work</span>
+            <h1>Projects built for real businesses</h1>
+            <p>
+              A selection of digital products shaped around clear business
+              goals, thoughtful design and reliable development.
+            </p>
+          </header>
+
           <div className="projects-list">
             {portfolioData.map((project, index) => (
-              <div
+              <button
+                type="button"
                 key={project.id || index}
-                className={`project-item`}
+                className="project-item"
                 onClick={() => setSelectedProject(project)}
               >
-                <img src={project.images.template} alt={project.title} />
-                <div className="overlay">
-                  <h3>{project.title}</h3>
+                <div className="project-image">
+                  <img src={project.images.template} alt="" loading="lazy" decoding="async" />
+                  <span className="project-index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-              </div>
+                <div className="project-summary">
+                  <div>
+                    <p>{project.subtitle}</p>
+                    <h2>{project.title}</h2>
+                  </div>
+                  <span className="project-action" aria-hidden="true">
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </span>
+                </div>
+                <div className="project-skills" aria-hidden="true">
+                  {project.skills.slice(0, 3).map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </button>
             ))}
           </div>
 
@@ -81,6 +107,7 @@ const Projects = () => {
                       <img
                         src={activeImage || modalImages[0]}
                         alt={selectedProject.title}
+                        decoding="async"
                       />
                     </div>
 
@@ -89,7 +116,9 @@ const Projects = () => {
                         <img
                           key={i}
                           src={img}
-                          alt={`thumb-${i}`}
+                          alt={`${selectedProject.title} preview ${i + 1}`}
+                          loading="lazy"
+                          decoding="async"
                           className={`thumb ${
                             activeImage === img ? "active" : ""
                           }`}
@@ -120,77 +149,219 @@ const Projects = () => {
 };
 
 const StyleMain = styled.main`
-  .projects-list {
-    padding: 96px 0;
-    margin: 0 auto;
+  .projects {
     max-width: 1120px;
-    display: grid;
-    gap: 12px;
+    margin: 0 auto;
+    padding: 88px 0 112px;
 
+    @media (max-width: 1160px) {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 64px;
+      padding-bottom: 80px;
+    }
+  }
+
+  .projects-header {
+    max-width: 720px;
+    margin-bottom: 56px;
+
+    > span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 18px;
+      color: var(--black);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    p {
+      max-width: 620px;
+      color: #626262;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 36px;
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .projects-list {
+    display: grid;
+    gap: 36px 24px;
     grid-template-columns: repeat(2, 1fr);
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
-      padding: 64px 16px;
+      gap: 28px;
     }
   }
 
   .project-item {
-    position: relative;
-    cursor: pointer;
+    min-width: 0;
+    padding: 0;
     overflow: hidden;
-    border-radius: 6px;
-    height: 294px;
-    background: #343434;
+    text-align: left;
+    appearance: none;
+    background: var(--white);
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease,
+      border-color 0.35s ease;
 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12);
-
-    transition: box-shadow 0.3s ease, transform 0.3s ease, height 0.3s ease;
-
-    @media (max-width: 768px) {
-      height: 220px;
+    &:hover,
+    &:focus-visible {
+      border-color: #d5d5d5;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.12);
     }
 
-    @media (max-width: 480px) {
-      height: 180px;
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
     }
   }
-  .project-item:hover {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.18);
+
+  .project-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #eeeeee;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
   }
 
-  .project-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+  .project-item:hover .project-image img,
+  .project-item:focus-visible .project-image img {
+    transform: scale(1.045);
   }
 
-  .project-item:hover img {
-    transform: scale(1.05);
-  }
-
-  .overlay {
+  .project-index {
     position: absolute;
-    top: 26px;
-    left: 18px;
-    padding: 8px 14px;
-    border-radius: 20px;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.66);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+  }
 
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(6px);
+  .project-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 24px 16px;
 
-    h3 {
-      color: var(--white);
-      font-size: 16px;
+    p {
+      margin-bottom: 7px;
+      color: #777777;
+      font-size: 13px;
       font-weight: 500;
-      line-height: 1;
-      white-space: nowrap;
+    }
 
-      @media (max-width: 480px) {
-        font-size: 14px;
+    h2 {
+      color: var(--black);
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+  }
+
+  .project-action {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    place-items: center;
+    color: var(--black);
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+
+  .project-item:hover .project-action,
+  .project-item:focus-visible .project-action {
+    color: var(--white);
+    background: var(--black);
+    transform: translateX(3px);
+  }
+
+  .project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 24px 24px;
+
+    span {
+      padding: 6px 10px;
+      color: #555555;
+      font-size: 12px;
+      font-weight: 500;
+      background: #f5f5f5;
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-summary {
+      padding: 20px 18px 14px;
+
+      h2 {
+        font-size: 20px;
       }
+    }
+
+    .project-skills {
+      padding: 0 18px 20px;
+    }
+
+    .project-action {
+      width: 38px;
+      height: 38px;
+      flex-basis: 38px;
     }
   }
 `;

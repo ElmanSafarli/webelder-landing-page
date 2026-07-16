@@ -11,13 +11,13 @@ const TopNavDesktop = () => {
             <Link to="/">Sign in</Link>
           </div>
           <div className="navigation">
-            <Link to="/">Product support</Link>
+            <Link to="/product-support">Product support</Link>
           </div>
           <div className="navigation">
-            <Link to="/">Company</Link>
+            <Link to="/company">Company</Link>
           </div>
           <div className="navigation">
-            <Link to="/">Contact us</Link>
+            <Link to="/contact">Contact us</Link>
           </div>
           <div className="menubar">
             <span>Language</span>

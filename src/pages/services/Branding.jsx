@@ -1,0 +1,17 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Navbar, Footer } from "../../widgets";
+import { ServiceLanding } from "./ServiceLanding.styles";
+
+const Branding = () => (
+  <><Navbar /><ServiceLanding $accent="#168466" $soft="#eef9f5">
+    <div className="container hero"><div className="hero-copy"><span className="eyebrow">Branding & identity</span><h1>A visual identity people can recognize and trust.</h1><p>We create distinctive brand systems that connect strategy, personality and practical communication across every customer touchpoint.</p><div className="hero-actions"><Link className="primary-link" to="/contact">Build your brand <span>→</span></Link><Link className="text-link" to="/projects">View selected work</Link></div></div>
+      <div className="hero-visual brand-kit" aria-hidden="true"><div className="brand-mark"><i>W</i><span>North / 24</span></div><div className="brand-card dark"><small>Primary mark</small><strong>W.</strong></div><div className="brand-card light"><small>Color system</small><div><i /><i /><i /></div></div><div className="brand-type"><small>Typography</small><b>Aa</b><span>Outfit / Identity</span></div></div>
+    </div>
+    <section className="section soft"><div className="container"><div className="section-heading"><div><span className="eyebrow">Identity system</span><h2>More than a logo. A complete visual language.</h2></div><p>Your identity should remain coherent whether it appears on a website, proposal, campaign or social post.</p></div><div className="feature-grid">{[["Brand direction","Positioning, personality and visual territory that set a clear creative foundation."],["Logo system","Primary and secondary marks designed to work at every scale and format."],["Color & typography","A recognizable palette and typographic voice built for practical use."],["Brand guidelines","Clear rules that help internal teams and partners stay consistent."],["Marketing assets","Templates and key materials ready for launch and everyday communication."],["Digital identity","A brand system considered specifically for websites and product interfaces."]].map((x,i)=><article className="feature" key={x[0]}><span className="feature-index">0{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p></article>)}</div></div></section>
+    <section className="section"><div className="container"><div className="section-heading"><div><span className="eyebrow">The process</span><h2>Built from strategy, refined through application.</h2></div></div><div className="process-list">{[["01","Discover","We learn the business, audience, market and ambition behind the brand."],["02","Define","A focused creative direction aligns the brand's voice and visual territory."],["03","Create","Identity concepts are explored, tested and refined into a flexible system."],["04","Apply","We prove the identity across the touchpoints your business uses most."],["05","Equip","Guidelines and production-ready files make the system easy to use."]].map(x=><div className="process-row" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></div></section>
+    <section className="section"><div className="container cta-band"><h2>Ready for an identity that reflects where your business is going?</h2><Link className="primary-link" to="/contact">Start the conversation <span>→</span></Link></div></section>
+  </ServiceLanding><Footer /></>
+);
+
+export default Branding;

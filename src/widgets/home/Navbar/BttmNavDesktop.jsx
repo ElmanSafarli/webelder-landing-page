@@ -22,14 +22,14 @@ const BottomNavDesktop = () => {
           </div>
           <div className="navigation">
             <div className="menubar">
-              <span className="nav-link">Services</span>
+              <Link className="nav-link" to="/services">Services</Link>
               <div className="menu">
                 <div className="menu-inner">
                   <div className="menu-items">
                     <span className="preview-label">Featured service</span>
                     <ul>
                       <li>
-                        <Link to="/">
+                        <Link to="/services/web-development">
                           <span>
                             <FontAwesomeIcon icon={faCode} />
                           </span>
@@ -38,7 +38,7 @@ const BottomNavDesktop = () => {
                       </li>
 
                       <li>
-                        <Link to="/">
+                        <Link to="/services/ui-ux-design">
                           <span>
                             <FontAwesomeIcon icon={faObjectUngroup} />
                           </span>
@@ -47,7 +47,7 @@ const BottomNavDesktop = () => {
                       </li>
 
                       <li>
-                        <Link to="/">
+                        <Link to="/services/branding">
                           <span>
                             <FontAwesomeIcon icon={faPenRuler} />
                           </span>
@@ -196,7 +196,14 @@ const StyledWrapper = styled.div`
             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
 
             padding: 20px;
-            display: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translate(-50%, -8px);
+            transform-origin: top center;
+            transition: opacity 0.22s ease, transform 0.22s ease,
+              visibility 0.22s ease;
             z-index: 30;
 
             .menu-inner {
@@ -391,8 +398,11 @@ const StyledWrapper = styled.div`
                     }
                   }
 
-                  a:hover {
+                  a:hover,
+                  a:focus-visible {
                     background: #f3f3f3;
+                    transform: translateX(3px);
+                    outline: none;
                   }
                 }
               }
@@ -409,8 +419,12 @@ const StyledWrapper = styled.div`
           }
         }
 
-        .menubar:hover .menu {
-          display: block;
+        .menubar:hover .menu,
+        .menubar:focus-within .menu {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: translate(-50%, 0);
         }
       }
     }

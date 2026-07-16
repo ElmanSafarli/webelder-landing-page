@@ -46,7 +46,7 @@ const Contact = () => {
       <Navbar />
       <StyleMain>
         <div className="contact">
-          <h2 className="contact-title">Contact Us</h2>
+          <p className="contact-title">Contact Us</p>
           <div className="contact-grid">
             <div className="contact-form">
               <h1>Get in touch with sales</h1>

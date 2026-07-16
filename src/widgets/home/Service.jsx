@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
-import { Services } from "../../constants";
+import { reviewsData } from "../../constants";
 
 const Service = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,7 +66,7 @@ const Service = () => {
                 className="slider-track"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {Services.map((review, index) => (
+                {reviewsData.map((review, index) => (
                   <div
                     key={index}
                     className={`slider-item ${
@@ -80,7 +80,7 @@ const Service = () => {
                     <div className="card">
                       <div>
                         <div className="img">
-                          <img src={review.img} alt={review.title} />
+                          <img src={review.img} alt={review.title} loading="lazy" decoding="async" />
                         </div>
                       </div>
                       <div>
@@ -99,7 +99,7 @@ const Service = () => {
               </div>
               <div className="slider_partners_logo">
                 <nav>
-                  {Services.map((_, index) => (
+                  {reviewsData.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
