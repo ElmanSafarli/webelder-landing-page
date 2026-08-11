@@ -10,6 +10,8 @@ import {
   buta_template,
   buta_laptop,
   buta_phone,
+  osn_main,
+  osn_template,
 } from "../../shared";
 
 const portfolioData = [
@@ -107,6 +109,36 @@ const portfolioData = [
       {
         name: "Website",
         link: "https://github.com/ElmanSafarli/Buta.git",
+      },
+    ],
+  },
+  {
+    id: "online-numbers",
+    title: "Online showcase of numbers",
+    subtitle: "CRM Platform Development",
+    images: {
+      main: osn_main,
+      template: osn_template,
+      first: osn_template,
+    },
+    gridSpan: 1,
+    description: `
+        Welcome to the online showcase of numbers project page! This project was created to provide a convenient and fast way to showcase numbers online with delivery of order notifications in Telegram. The site has a minimalistic design
+        and an intuitive interface, which makes the ordering process easy and enjoyable for users.
+    `,
+    skills: [
+      "UI/UX",
+      "Web design",
+      "Web development",
+      "SEO",
+      "Order Numbers",
+      "Third Party API Integration",
+      "Deployment",
+    ],
+    links: [
+      {
+        name: "Website",
+        link: "",
       },
     ],
   },

@@ -12,6 +12,9 @@ import buta_template from "./buta/templatet-buta.jpg";
 import buta_laptop from "./buta/buta-laptop.jpg";
 import buta_phone from "./buta/buta-phone.jpg";
 
+import osn_main from "./onlineShowcaseNumbers/osn_main.png";
+import osn_template from "./onlineShowcaseNumbers/osn_template.png";
+
 export {
   misam_template,
   misam_main,
@@ -24,4 +27,6 @@ export {
   buta_template,
   buta_laptop,
   buta_phone,
+  osn_main,
+  osn_template,
 };
